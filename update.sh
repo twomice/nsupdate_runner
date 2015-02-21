@@ -41,7 +41,7 @@ if [[ "$live_ip" != "$stored_ip" ]]; then
   cmd="nsupdate -k \"${mydir}/${key_file}\" \"${tmpfile}\""
   echo "$timestamp: $cmd" >> "$log_file"
   echo "$timestamp: ====== START contents of $tmpfile" >> "$log_file"
-  cat "$tmpfile" >> "$log_file"
+  cat "$tmpfile" | sed "s/^/$timestamp: /" >> "$log_file"
   echo "$timestamp: ====== END contents of $tmpfile" >> "$log_file"
 
   eval "$cmd"
