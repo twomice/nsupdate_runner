@@ -1,0 +1,27 @@
+# Copy this file to config.sh and edit according to the inline comments.
+
+# IP detection URL for retreiving the current IP address. Should return
+# only the current IP address, with no other content, not even
+# html.  See my_ip.php for an example of a PHP file which returns
+# the proper output.
+my_ip_url=""
+
+# User for http basic auth connection to IP detection url.
+# Optional.
+http_user=""
+
+# Password for http basic auth connection to IP detection url.
+# Optional.
+http_passwd=""
+
+# DNS server name
+ddns_server=""
+
+# DNS zone name
+ddns_zone=""
+
+# DNS domain to update with the current IP address
+ddns_domain=""
+
+# Private key file for nsupdate
+key_file=""

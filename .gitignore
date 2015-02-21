@@ -1,0 +1,6 @@
+config.sh
+log.txt
+my_ip.txt
+*.key
+*.private
+
