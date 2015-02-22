@@ -1,4 +1,4 @@
-nsupdate_runner
+nsupdate_runner.sh
 
 Checks the current IP address using a remote URL, and if 
 different from the most recently stored IP address, updates
