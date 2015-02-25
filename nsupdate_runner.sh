@@ -21,14 +21,20 @@ fi
 
 ip_file="${mydir}/my_ip.txt"
 log_file="${mydir}/log.txt"
+timestamp=$(date)
 
 touch "$ip_file"
 stored_ip=$(cat "$ip_file")
-live_ip=$(wget -O - -q --no-check-certificate --http-user="${http_user}" --http-passwd="${http_passwd}" "$my_ip_url");
+cmd="wget -O - -q --no-check-certificate --http-user=\"${http_user}\" --http-passwd=\"${http_passwd}\" \"$my_ip_url\""
+live_ip=$(eval $cmd);
+
+if [[ -z "$live_ip" ]]; then
+  echo "$timestamp: ERROR: Could not determine live_ip. Fatal. live_ip command was: $cmd" >> $log_file
+  exit 1
+fi
  
 if [[ "$live_ip" != "$stored_ip" ]]; then
 
-  timestamp=$(date)
   echo "$timestamp: stored_ip: ${stored_ip}; live_ip: ${live_ip}"  >> "$log_file"
 
   tmpfile=$(mktemp)
